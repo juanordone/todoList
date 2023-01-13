@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 
 export default function Lista() {
   const [tareas, setTareas] = useState([]);
-  
+  const [nuevaTarea, setNuevaTarea] = useState([]);
 
   useEffect(function () {
     async function fetchTareas() {
@@ -20,14 +20,26 @@ export default function Lista() {
     setTareas(nuevaLista);
   }
 
-  function tachar(){
-    setHecho()
-    
+  function añadirTarea(e) {
+    setNuevaTarea(e.target.value);
+  }
+
+  function añadirTareaALista(e) {
+    e.preventdefault();
+    if (nuevaTarea == "") {
+      return;
+    }
+    setTareas([...tareas, nuevaTarea]);
+    setNuevaTarea("");
   }
 
   return (
     <div>
-      <h1>ToDo List</h1>
+      <h1>Lista de Tareas</h1>
+      <form onSubmit={añadirTareaALista}>
+        <input value={nuevaTarea} onChange={añadirTarea} />
+        <button>Añadir Tarea</button>
+      </form>
       <ol>
         {tareas
           .filter((item) => item.id <= 20)
