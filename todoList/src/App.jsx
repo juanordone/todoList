@@ -1,15 +1,12 @@
-import { useState } from 'react'
-import Lista from './components/Lista/Lista'
-import './App.css'
+import "./App.css";
+import Todos from "./views/Todos/Todos";
 
 function App() {
-  
-
   return (
     <div className="App">
-     <Lista/>
+      <Todos />
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
