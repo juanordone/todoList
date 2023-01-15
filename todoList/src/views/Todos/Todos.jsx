@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
+import Formulario from "../../components/Formulario/Formulario";
 
 import Lista from "../../components/Lista/Lista";
 
 export default function Todos() {
   const [todos, setTodos] = useState(null);
+  const [nuevaTarea, SetNuevaTarea] = useState("");
 
   useEffect(function () {
     async function fetchTodos() {
@@ -15,10 +17,38 @@ export default function Todos() {
     }
     fetchTodos();
   }, []);
+
+  function añadirNuevaTarea(e) {
+    SetNuevaTarea(e.target.value);
+  }
+
+  function añadirTareaALaLista(e) {
+    e.preventDefault();
+    if (nuevaTarea === "") {
+      return;
+    }
+
+    if (todos.length > 0) {
+      setTodos([
+        ...todos,
+         
+        { userId: todos.length, id: todos.id, title: nuevaTarea, completed: false },
+      ]);
+      SetNuevaTarea("");
+      
+    }
+    console.log(todos);
+  }
   return (
     <>
       <h1>Lista de tareas</h1>
-      <Lista items={todos} setState={setTodos} />
+      {/* <Formulario items={todos} setState={setTodos} /> */}
+      <form onSubmit={añadirTareaALaLista}>
+        <input value={nuevaTarea} onChange={añadirNuevaTarea} />
+        <br/>
+        <button className="btn btn-danger">Añadir tarea</button>
+      </form>
+      <Lista  items={todos} setState={setTodos} />
     </>
   );
 }

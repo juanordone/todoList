@@ -1,6 +1,7 @@
 export default function ListItems({ item, setState, tachar, index }) {
   return (
     <>
+   
       <li
         onClick={() => tachar(index)}
         className={`list-group-item d-flex justify-content-between ${
@@ -9,7 +10,7 @@ export default function ListItems({ item, setState, tachar, index }) {
       >
         {item.title}
         <button
-          onClick={(e) => setState(e, item.id)}
+          onClick={(e) => setState(e, item.title)}
           className="btn btn-danger"
         >
           {" "}
