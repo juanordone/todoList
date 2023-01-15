@@ -32,7 +32,7 @@ export default function Todos() {
       setTodos([
         ...todos,
          
-        { userId: todos.length, id: todos.id, title: nuevaTarea, completed: false },
+        { userId: todos.length, id: todos.length + 1, title: nuevaTarea, completed: false },
       ]);
       SetNuevaTarea("");
       

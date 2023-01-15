@@ -10,7 +10,7 @@ export default function ListItems({ item, setState, tachar, index }) {
       >
         {item.title}
         <button
-          onClick={(e) => setState(e, item.title)}
+          onClick={(e) => setState(e, item.id)}
           className="btn btn-danger"
         >
           {" "}

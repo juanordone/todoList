@@ -1,9 +1,9 @@
 import ListaItems from "../ListaItems/ListaItems";
 
 export default function Lista({ items, setState }) {
-  function borrarItem(e, title) {
+  function borrarItem(e, id) {
     e.stopPropagation();
-    setState(items.filter((item) => item.title !== title));
+    setState(items.filter((item) => item.id !== id));
   }
 
   function tachar(index) {
