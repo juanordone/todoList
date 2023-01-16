@@ -28,7 +28,7 @@ export default function Todos() {
       return;
     }
 
-    if (todos.length > 0) {
+    
       setTodos([
         ...todos,
          
@@ -36,7 +36,7 @@ export default function Todos() {
       ]);
       SetNuevaTarea("");
       
-    }
+    
     console.log(todos);
   }
   return (
